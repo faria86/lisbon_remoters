@@ -45,10 +45,42 @@ placeRouter.post('/create', routeGuard, (req, res, next) => {
     });
 });
 
+/*
+placeRouter.get('/edit', routeGuard, (req, res, next) => {
+  const placeId = req.params.placeId;
+  
+  Place.findOne({
+    _id: placeId,
+    creator: req.user._id
+  })
+    .then(place => {
+      res.render('/edit', { place });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
 
+placeRouter.post('/place:Id/edit', routeGuard, (req, res, next) => {
+  const placeId = req.params.placeId;
 
-
-
+  Place.findOneAndUpdate(
+    {
+      _id: placeId,
+      creator: req.user._id
+    },
+    {
+      
+    }
+  )
+    .then(place => {
+      res.redirect(`single/${placeId}`);
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+*/
 
 
 module.exports = placeRouter;
