@@ -4,11 +4,15 @@ const mongoose = require('mongoose');
 
 const placeSchema = new mongoose.Schema(
   {
-    title: {
+    name: {
       type: String,
       minlength: 5,
       maxlength: 140,
       required: true
+    },
+    descripition: {
+      type: String,
+      maxlength: 300
     },
     location: {
       type: String,
