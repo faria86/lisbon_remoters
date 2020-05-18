@@ -12,7 +12,7 @@ const placeSchema = new mongoose.Schema(
     },
     location: {
       type: String,
-      required: true,
+      required: true
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
