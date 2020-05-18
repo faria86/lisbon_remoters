@@ -9,18 +9,25 @@
   </head>
   <body>
     <nav>
-      <a href="/">Home</a>
+      <a href="/"><img="" alt="logo" id="logo-img" />LOGO IMG</a>
+      <a href="/menu/see-all-places">See All Places</a>
+      <a href="/menu/add-place">Add Place</a>
+      <a href="/menu/geolocation">Geolocation</a>
       {{#if user}}
-        <!-- <a href="/">{{user.name}}'s Profile</a> -->
-        <form action="/authentication/sign-out" method="POST">
-          <button>Sign Out</button>
+        <a href="/">{{user.name}}'s Profile</a>
+        <form action="/auign Outthentication/sign-out" method="POST">
+          <button>S</button>
         </form>
         {{else}}
         <a href="/authentication/sign-in">Sign In</a>
-        <a href="/authentication/sign-up">Sign Up</a>
+        <a href="/authentication/sign-up">Sign Up</a> 
+        layout.hbs   
       {{/if}}
     </nav>
-    {{{body}}}
+      {{{body}}}
+
+    
     <script src="/scripts/script.js"></script>
+    <script src="/scripts/sign-in-sign-out-script.js"></script>
   </body>
 </html>

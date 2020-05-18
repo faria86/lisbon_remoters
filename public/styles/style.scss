@@ -10,7 +10,7 @@ $grey: hsla(0, 0, 75%, 0.5);
 }
 
 body {
-  max-width: 52em;
+  max-width: 100em;
   padding: 0 1em;
   margin: 0 auto;
   font-family: sans-serif;
@@ -75,4 +75,30 @@ button,
 textarea {
   min-height: 8em;
   resize: vertical;
+}
+
+// HOME LAYUOT
+
+#main-layout {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container-menu {
+  display: flex;
+  flex-direction: row;
+}
+
+.col.places {
+  width: 33%;
+  background-color: red;
+}
+.col.place {
+  width: 33%;
+  background-color: green;
+}
+.col.geolocalization {
+  width: 33%;
+  background-color: yellowgreen;
 }
