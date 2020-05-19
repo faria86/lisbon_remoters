@@ -10,6 +10,7 @@ const routeGuard = require("./../middleware/route-guard");
 
 placeRouter.get("/list", (req, res, next) => {
   Place.find()
+    .populate('creator')
     .then((places) => {
       res.render("place/list", { places });
     })
@@ -24,7 +25,6 @@ placeRouter.get("/create", routeGuard, (req, res) => {
 
 placeRouter.post("/create", routeGuard, (req, res, next) => {
   const name = req.body.name;
-
   Place.findOne({ name })
     .then((document) => {
       if (!document) {
@@ -32,7 +32,7 @@ placeRouter.post("/create", routeGuard, (req, res, next) => {
           name: req.body.name,
           description: req.body.description,
           location: req.body.location,
-          coordinates: [39.5, 3.75],
+          coordinates: [],
           creator: req.user._id,
         });
       } else {
@@ -49,12 +49,17 @@ placeRouter.post("/create", routeGuard, (req, res, next) => {
     });
 });
 
-placeRouter.get("/:placeId", routeGuard, (req, res, next) => {
+placeRouter.get("/:placeId", (req, res, next) => {
   const placeId = req.params.placeId;
-  // findeById
-  // then
-  res.render("place/list");
-  // catch
+
+  Place.findById({
+    _id: placeId
+  })
+    .populate("creator")
+    .then((place) => res.render("place/single", { place, API_KEY: process.env.API_KEY }))
+    .catch((error) => {
+      next(error);
+    });
 });
 
 placeRouter.get("/:placeId/edit", (req, res, next) => {

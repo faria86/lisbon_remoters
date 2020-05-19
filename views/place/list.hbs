@@ -4,8 +4,7 @@
 {{#each places}}
   <a href="/place/{{ _id }}">
     <h4>{{ name }}</h4>
-    <img src="{{ picture }}" />
-    <small>Created by {{ creator.name }}</small>
-    <small>{{ timestamps }}</small>
   </a>
-{{/each}}
+    <small>Created by {{ creator.email }}</small>
+    <small>{{ createdAt }}</small>
+{{/each}} 
