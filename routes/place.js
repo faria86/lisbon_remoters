@@ -53,8 +53,7 @@ placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, ne
           name: req.body.name,
           images,
           description: req.body.description,
-          location: req.body.location,
-          coordinates: [],
+          coordinates: [req.body.longitude, req.body.latitude],
           creator: req.user._id
         });
       } else {
@@ -71,7 +70,7 @@ placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, ne
     });
 });
 
-placeRouter.get("/:placeId", (req, res, next) => {
+placeRouter.get("/:placeId", routeGuard, (req, res, next) => {
   const placeId = req.params.placeId;
 
   Place.findById({
@@ -84,7 +83,7 @@ placeRouter.get("/:placeId", (req, res, next) => {
     });
 });
 
-placeRouter.get('/:placeId/edit', (req, res, next) => {
+placeRouter.get('/:placeId/edit', routeGuard, (req, res, next) => {
   const placeId = req.params.placeId;
 
   Place.findOne({
@@ -103,8 +102,8 @@ placeRouter.get('/:placeId/edit', (req, res, next) => {
     });
 });
 
-placeRouter.post('/place:Id/edit', routeGuard, (req, res, next) => {
-  const placeId = req.params.Id;
+placeRouter.post('/:placeId/edit', routeGuard, (req, res, next) => {
+  const placeId = req.params.placeId;
 
   Place.findOneAndUpdate(
     {
@@ -114,12 +113,12 @@ placeRouter.post('/place:Id/edit', routeGuard, (req, res, next) => {
     {
       name: req.body.name,
       description: req.body.description,
-      location: req.body.location,
-      creator: req.user._id
+      creator: req.user._id,
+      coordinates: [req.body.longitude, req.body.latitude]
     }
   )
     .then((place) => {
-      res.redirect(`single/${placeId}`);
+      res.redirect('/place/list');
     })
     .catch((error) => {
       next(error);
