@@ -39,7 +39,7 @@ router.get('/join-us', (req, res, next) => {
   res.render('join-us');
 });
 
-router.post('/join-us', (req, res, next) => {
+router.post('/sign-in', (req, res, next) => {
   let user;
   const { email, password } = req.body;
   User.findOne({ email })

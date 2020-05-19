@@ -20,12 +20,15 @@ const storage = multerStorageCloudinary({
   cloudinary,
   folder: 'libon-remoters'
 });
+//END UPLOAD
 
 const uploader = multer({ storage });
 
 const placeRouter = new express.Router();
 
 const routeGuard = require('./../middleware/route-guard');
+
+/* LISTING PLACES */
 
 placeRouter.get('/list', (req, res, next) => {
   Place.find()
@@ -38,6 +41,8 @@ placeRouter.get('/list', (req, res, next) => {
     });
 });
 
+/* ADDING PLACES */
+
 placeRouter.get('/create', routeGuard, (req, res) => {
   res.render('place/create');
 });
@@ -45,7 +50,6 @@ placeRouter.get('/create', routeGuard, (req, res) => {
 placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, next) => {
   const name = req.body.name;
   const images = req.file.url;
-
   Place.findOne({ name })
     .then((document) => {
       if (!document) {
@@ -53,8 +57,7 @@ placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, ne
           name: req.body.name,
           images,
           description: req.body.description,
-          location: req.body.location,
-          coordinates: [],
+          coordinates: [req.body.longitude, req.body.latitude],
           creator: req.user._id
         });
       } else {
@@ -71,25 +74,41 @@ placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, ne
     });
 });
 
-placeRouter.get("/:placeId", (req, res, next) => {
-  const placeId = req.params.placeId;
+/* PLACES DETAIL */
 
+placeRouter.get('/:placeId', routeGuard, (req, res, next) => {
+  const placeId = req.params.placeId;
   Place.findById({
     _id: placeId
   })
-    .populate("creator")
-    .then((place) => res.render("place/single", { place, API_KEY: process.env.API_KEY }))
+    .populate('creator')
+    .then((place) => res.render('place/single', { place, API_KEY: process.env.API_KEY }))
     .catch((error) => {
       next(error);
     });
 });
 
-placeRouter.get('/:placeId/edit', (req, res, next) => {
+/* DELETING PALCES */
+
+placeRouter.post('/:placeId/delete', (req, res, next) => {
   const placeId = req.params.placeId;
 
+  Place.findByIdAndDelete(placeId)
+    .then(() => {
+      res.redirect('/place/list');
+      console.log(`You deleted this Place => ${placeId}`);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+/* EDIT PLACES */
+
+placeRouter.get('/:placeId/edit', routeGuard, (req, res, next) => {
+  const placeId = req.params.placeId;
   Place.findOne({
     _id: placeId
-    // creator: req.user._id,
   })
     .then((place) => {
       if (req.user._id.toString === place.creator.toString) {
@@ -102,10 +121,8 @@ placeRouter.get('/:placeId/edit', (req, res, next) => {
       next(error);
     });
 });
-
-placeRouter.post('/place:Id/edit', routeGuard, (req, res, next) => {
-  const placeId = req.params.Id;
-
+placeRouter.post('/:placeId/edit', routeGuard, (req, res, next) => {
+  const placeId = req.params.placeId;
   Place.findOneAndUpdate(
     {
       _id: placeId,
@@ -114,12 +131,12 @@ placeRouter.post('/place:Id/edit', routeGuard, (req, res, next) => {
     {
       name: req.body.name,
       description: req.body.description,
-      location: req.body.location,
-      creator: req.user._id
+      creator: req.user._id,
+      coordinates: [req.body.longitude, req.body.latitude]
     }
   )
     .then((place) => {
-      res.redirect(`single/${placeId}`);
+      res.redirect('/place/list');
     })
     .catch((error) => {
       next(error);
