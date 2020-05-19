@@ -24,7 +24,7 @@ router.post('/join-us', (req, res, next) => {
     })
     .then((user) => {
       req.session.user = user._id;
-      res.redirect('/private');
+      res.redirect('/');
     })
     .catch((error) => {
       next(error);
@@ -50,7 +50,7 @@ router.post('/join-us', (req, res, next) => {
     .then((result) => {
       if (result) {
         req.session.user = user._id;
-        res.redirect('/private');
+        res.redirect('/');
       } else {
         return Promise.reject(new Error('Wrong password.'));
       }

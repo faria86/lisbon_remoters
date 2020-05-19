@@ -12,13 +12,22 @@ const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 const basicAuthenticationDeserializer = require('./middleware/basic-authentication-deserializer.js');
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
+
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
+const placeRouter = require('./routes/place');
+const gitHubRouter = require('./routes/git-hub-authentication');
+const googleRouter = require('./routes/google-authentication');
+
 const debug = require('debug');
 const dotenv = require('dotenv');
 const bcryptjs = require('bcryptjs');
 const hbs = require('hbs');
-const placeRouter = require('./routes/place');
+
+//CONNECT PASSPORT
+const passport = require('passport');
+require('./config-passport');
+//END CONNECT
 
 const app = express();
 
@@ -30,8 +39,7 @@ app.use(
   sassMiddleware({
     src: join(__dirname, 'public'),
     dest: join(__dirname, 'public'),
-    outputStyle:
-      process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
+    outputStyle: process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
     force: process.env.NODE_ENV === 'development',
     sourceMap: true
   })
@@ -57,12 +65,22 @@ app.use(
     })
   })
 );
+
+require('./config-passport');
+
+//PASSPORT INIT
+app.use(passport.initialize());
+app.use(passport.session());
+//END INT
+
 app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
 
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/place', placeRouter);
+app.use('/git-hub-authentication', gitHubRouter);
+app.use('/google-authentication', googleRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

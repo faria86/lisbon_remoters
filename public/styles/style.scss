@@ -83,8 +83,22 @@ textarea {
   resize: vertical;
 }
 
+//USERS PHOTO
+
+.profile-picture {
+  max-width: 3em;
+  border-radius: 50%;
+  margin-right: 1em;
+}
+
 //SIGN IN - SING OUT STYLE
+
+input {
+  width: 33em;
+}
+
 button {
+  width: 15em;
   border: 1px solid;
   background-color: #ff4b2b;
   color: #ffffff;
@@ -106,12 +120,13 @@ button.ghost {
   border-color: #ffffff;
 }
 
-.container {
+#container {
+  margin-top: 12em;
   background-color: #fff;
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-height: 100vh;
+  min-height: 60vh;
 }
 
 .form-container {
@@ -185,7 +200,7 @@ button.ghost {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 40px;
+  padding: 0 3em;
   text-align: center;
   top: 0;
   height: 100%;
@@ -212,16 +227,17 @@ button.ghost {
 }
 
 .social-container {
-  margin: 20px 0;
+  margin: 2em 0;
 }
 
-.social-container a {
-  border: 1px solid #dddddd;
+// SOCIAL ICONS
+
+img.git-hub-logo {
+  max-width: 3em;
   border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 5px;
-  height: 40px;
-  width: 40px;
+}
+
+img.google-logo {
+  max-width: 3em;
+  border-radius: 50%;
 }

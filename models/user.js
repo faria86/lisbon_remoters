@@ -13,10 +13,20 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
+  photo: {
+    type: String
+  },
+  githubId: {
+    type: String
+  },
   passwordHash: {
     type: String
   }
-});
+},
+{
+  timestamps: true
+}
+);
 
 const User = mongoose.model('User', userSchema);
 

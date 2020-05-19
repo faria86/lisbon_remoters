@@ -9,20 +9,16 @@
   </head>
   <body>
     <nav>
-      <a href="/"><img="" alt="logo" id="logo-img" />LOGO IMG</a>
+      <a href="/"><img="#" alt="logo" id="logo-img" />LOGO IMG</a>
       <a href="/place/list">See All Places</a>
       <a href="/place/create">Add Place</a>
       {{#if user}}
-        <a href="/">{{user.name}}'s Profile</a>
+        <a href="/"><img src="{{ user.photo }}" class="profile-picture">{{user.name}}{{user.username}}'s Profile</a>
         <form action="/authentication/sign-out" method="POST">
           <button>Sign Out</button>
         </form>
         {{else}}
         <a href="/authentication/join-us">Join Us</a>
-        <!--
-        <a href="/authentication/sign-in">Sign In</a>
-        <a href="/authentication/sign-up">Sign Up</a> 
-        -->
       {{/if}}
     </nav>
 

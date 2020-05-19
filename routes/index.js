@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'Hello World!' });
 });
 
-router.get('/private', routeGuard, (req, res, next) => {
+router.get('/user/private', routeGuard, (req, res, next) => {
   res.render('private');
 });
 
