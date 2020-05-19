@@ -4,6 +4,8 @@
 {{#each places}}
   <a href="/place/{{ _id }}">
     <h4>{{ name }}</h4>
-    <span>Latitude: {{ location.coordinates.[1] }} Longitude: {{ location.coordinates.[0] }}</span>
+    <img src="{{ picture }}" />
+    <small>Created by {{ creator.name }}</small>
+    <small>{{ timestamps }}</small>
   </a>
 {{/each}}

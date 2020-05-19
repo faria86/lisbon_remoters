@@ -16,7 +16,6 @@ const placeSchema = new mongoose.Schema(
     },
     location: {
       type: String,
-      required: true
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
