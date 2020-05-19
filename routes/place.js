@@ -121,8 +121,10 @@ placeRouter.get('/:placeId/edit', routeGuard, (req, res, next) => {
       next(error);
     });
 });
+
 placeRouter.post('/:placeId/edit', routeGuard, (req, res, next) => {
   const placeId = req.params.placeId;
+
   Place.findOneAndUpdate(
     {
       _id: placeId,

@@ -1,8 +1,9 @@
 <article>
     <h1>{{ place.name }}</h1>
     <small>Created by {{ place.creator.email }}</small>
+    <img src="{{ place.images }}">
     <br />
-    <p>{{ place.descripition }}</p>
+    <p>{{ place.description }}</p>
 
     <div id="map-container"></div>
 
@@ -11,13 +12,23 @@
 
 
 <script>
-      function initMap() {
-        const $mapContainer = document.getElementById('map-container');
-        const map = new google.maps.Map($mapContainer, {
-          center: { lat: 38.75, lng: -9.15 },
-          zoom: 8
-        });
+  function initMap () {
+    const $mapContainer = document.getElementById('map-container');
+    const map = new window.google.maps.Map($mapContainer, {
+      center: { lat: 38.75, lng: -9.15 },
+      zoom: 10
+    });
+    
+    var lat = {{ place.coordinates.[1] }};
+    var lng = {{ place.coordinates.[0] }};
+    const marker = new window.google.maps.Marker({
+      map,
+      position: {
+        lat,
+        lng
       }
+    });
+  }
 </script>
 
 <script src='https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&callback=initMap'async defer></script>
