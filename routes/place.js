@@ -29,6 +29,7 @@ const routeGuard = require('./../middleware/route-guard');
 
 placeRouter.get('/list', (req, res, next) => {
   Place.find()
+    .populate('creator')
     .then((places) => {
       res.render('place/list', { places });
     })
@@ -70,12 +71,17 @@ placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, ne
     });
 });
 
-placeRouter.get('/:placeId', routeGuard, (req, res, next) => {
+placeRouter.get("/:placeId", (req, res, next) => {
   const placeId = req.params.placeId;
-  // findeById
-  // then
-  res.render('place/list');
-  // catch
+
+  Place.findById({
+    _id: placeId
+  })
+    .populate("creator")
+    .then((place) => res.render("place/single", { place, API_KEY: process.env.API_KEY }))
+    .catch((error) => {
+      next(error);
+    });
 });
 
 placeRouter.get('/:placeId/edit', (req, res, next) => {
