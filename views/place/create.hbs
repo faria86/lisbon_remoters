@@ -1,4 +1,4 @@
-<form action="/place/create" method="POST">
+<form action="/place/create" method="POST" enctype="multipart/form-data">
   <div id="map-container"></div>
 
   <label for="name-input">Place Name</label>
@@ -11,7 +11,11 @@
   <input required id="longitude-input" type="text" name="longitude" placeholder="Restaurant Longitude">
 
   <label for="description-input">Description</label>
-  <input required id="drescription-input" type="text" name="description" placeholder="Place Description">
+  <input required id="description-input" type="text" name="description" placeholder="Place Description">
+  
+  <label for="upload-image-input">Imagse</label>
+  <input id="upload-image-input" name="images" type="file" />
   
   <button>Create Place</button>
+
 </form>

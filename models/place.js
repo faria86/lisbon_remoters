@@ -10,12 +10,15 @@ const placeSchema = new mongoose.Schema(
       maxlength: 140,
       required: true
     },
-    descripition: {
+    images: {
+      type: String
+    },
+    description: {
       type: String,
       maxlength: 300
     },
     location: {
-      type: String,
+      type: String
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
@@ -37,7 +40,6 @@ const placeSchema = new mongoose.Schema(
     }
   }
 );
-
 
 placeSchema.index({ location: '2dsphere' });
 

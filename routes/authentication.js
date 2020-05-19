@@ -7,6 +7,8 @@ const User = require('./../models/user');
 
 const router = new Router();
 
+//SIGN UP
+
 router.get('/join-us', (req, res, next) => {
   res.render('join-us');
 });
@@ -30,6 +32,8 @@ router.post('/join-us', (req, res, next) => {
       next(error);
     });
 });
+
+//SING IN
 
 router.get('/join-us', (req, res, next) => {
   res.render('join-us');

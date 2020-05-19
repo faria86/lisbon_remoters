@@ -13,7 +13,7 @@
       <a href="/place/list">See All Places</a>
       <a href="/place/create">Add Place</a>
       {{#if user}}
-        <a href="/"><img src="{{ user.photo }}" class="profile-picture">{{user.name}}{{user.username}}'s Profile</a>
+        <a href="/"><img src="{{ photo }}" class="profile-picture">{{user.name}}'s Profile</a>
         <form action="/authentication/sign-out" method="POST">
           <button>Sign Out</button>
         </form>

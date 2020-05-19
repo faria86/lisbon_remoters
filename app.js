@@ -18,6 +18,7 @@ const authenticationRouter = require('./routes/authentication');
 const placeRouter = require('./routes/place');
 const gitHubRouter = require('./routes/git-hub-authentication');
 const googleRouter = require('./routes/google-authentication');
+const uploadRouter = require('./routes/upload');
 
 const debug = require('debug');
 const dotenv = require('dotenv');
@@ -81,6 +82,7 @@ app.use('/authentication', authenticationRouter);
 app.use('/place', placeRouter);
 app.use('/git-hub-authentication', gitHubRouter);
 app.use('/google-authentication', googleRouter);
+app.use('/upload', uploadRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
