@@ -1,4 +1,13 @@
 <h1>Private</h1>
-<span><strong>Name</strong>: {{user.name}}</span>
-<br />
-<span><strong>Email</strong>: {{user.email}}</span>
+
+{{#each user}}
+
+  <span><img src="{{ user.photo }}" class="profile-picture"></a></span>
+
+  <span><strong>Name</strong>:{{name}}'s Profile</span>
+  <br />
+  <span><strong>Email</strong>: {{email}}</span>
+  <br />
+
+{{/each}}
+

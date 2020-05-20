@@ -7,8 +7,6 @@ const passport = require('passport');
 
 const routeGuard = require('./../middleware/route-guard');
 
-//GIT HUB SIGN IN
-
 gitHubRouter.get(
   '/github',
   passport.authenticate('github', {
@@ -20,10 +18,12 @@ gitHubRouter.get(
 gitHubRouter.get(
   '/github-callback',
   passport.authenticate('github', {
-    successRedirect: '/user/private',
+    successRedirect: '/',
     failureRedirect: '/error'
   })
 );
+
+//SIGN-UP
 
 gitHubRouter.get('/join-us', (req, res, next) => {
   //console.log(req.user);
@@ -38,6 +38,8 @@ gitHubRouter.post(
   })
 );
 
+//SIGN-IN
+
 gitHubRouter.get('/join-us', (req, res, next) => {
   res.render('join-us');
 });
@@ -45,12 +47,12 @@ gitHubRouter.get('/join-us', (req, res, next) => {
 gitHubRouter.post(
   '/join-us',
   passport.authenticate('join-us', {
-    successRedirect: '/user/private',
+    successRedirect: '/',
     failureRedirect: '/join-us'
   })
 );
 
-gitHubRouter.get('/private', routeGuard, (req, res, next) => {
+gitHubRouter.get('/user/private', routeGuard, (req, res, next) => {
   res.render('user/private');
 });
 

@@ -4,10 +4,13 @@
 
 const passport = require('passport');
 const passportGithub = require('passport-github');
-
 const GithubStrategy = passportGithub.Strategy;
 
 const User = require('./models/user');
+
+passport.serializeUser((user, callback) => {
+  callback(null, user._id);
+});
 
 passport.deserializeUser((id, callback) => {
   User.findById(id)
@@ -19,6 +22,8 @@ passport.deserializeUser((id, callback) => {
     });
 });
 
+//GITHUB
+
 passport.use(
   new GithubStrategy(
     {
@@ -28,6 +33,7 @@ passport.use(
       scope: 'user:email'
     },
     (accessToken, refreshToken, profile, callback) => {
+      console.log(profile);
       const name = profile.displayName;
       const email = profile.emails.length ? profile.emails[0].value : null;
       const photo = profile._json.avatar_url;

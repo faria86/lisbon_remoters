@@ -7,6 +7,8 @@ const User = require('./../models/user');
 
 const router = new Router();
 
+const routeGuard = require('./../middleware/route-guard');
+
 //SIGN UP
 
 router.get('/join-us', (req, res, next) => {
@@ -63,6 +65,7 @@ router.post('/sign-in', (req, res, next) => {
       next(error);
     });
 });
+
 
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();

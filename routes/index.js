@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/user/private', routeGuard, (req, res, next) => {
-  res.render('private');
+  res.render('user/private');
 });
 
 module.exports = router;
