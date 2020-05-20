@@ -2,9 +2,13 @@
 <h1>List of Places</h1>
 
 {{#each places}}
-  <a href="/place/{{ _id }}"><img src="{{ images }}"/><h4>{{ name }}</h4></a>
-  <form action="/place/{{_id}}/delete" method="POST"><button>Delete</button></form> 
+  <a href="/place/{{ _id }}"><h4>{{ name }}</h4></a>
+  <img src="{{ images }}"/>
   <small>Created by {{ creator.email }}</small>
   <br>
   <small>Created at {{ creator.createdAt }}</small>
+  <br />
+  <form action="/place/{{_id}}/delete" method="POST">
+    <button>Delete</button>
+  </form> 
 {{/each}} 

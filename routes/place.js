@@ -2,6 +2,7 @@
 
 const express = require('express');
 const Place = require('./../models/place');
+const Comment = require('./../models/comment');
 
 //IMG STORAGE UPLOAD
 const multer = require('multer');
@@ -78,11 +79,16 @@ placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, ne
 
 placeRouter.get('/:placeId', routeGuard, (req, res, next) => {
   const placeId = req.params.placeId;
-  Place.findById({
-    _id: placeId
-  })
+  let place;
+  Place.findById(placeId)
     .populate('creator')
-    .then((place) => res.render('place/single', { place, API_KEY: process.env.API_KEY }))
+    .then((singlePlace) => {
+      place = singlePlace
+      return Comment.find({ place:placeId })
+    })
+    .then(comments =>{
+      res.render('place/single', { place, comments, API_KEY: process.env.API_KEY })
+    })
     .catch((error) => {
       next(error);
     });

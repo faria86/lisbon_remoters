@@ -9,6 +9,7 @@ const GithubStrategy = passportGithub.Strategy;
 
 const User = require('./models/user');
 
+
 passport.deserializeUser((id, callback) => {
   User.findById(id)
     .then((user) => {
