@@ -1,6 +1,6 @@
 <article>
     <h1>{{ place.name }}</h1>
-    <small>Created by {{ place.creator.email }}</small>
+    <small>Created by {{ place.creator.name }}</small>
     <img src="{{ place.images }}">
     <br />
     <p>{{ place.description }}</p>
@@ -14,9 +14,9 @@
   {{#each comments}}
     <li>
       <p>{{ content }}</p>
-      <small>Commented by {{ creator }}</small>
+      <small>Commented by {{ creator.name }}</small>
       <br />
-      <small>Created At {{ createdAt }}</small>
+      <small>Created At {{ creator.createdAt }}</small>
     </li>
   {{/each}}
 </ul>
