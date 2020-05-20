@@ -66,6 +66,23 @@ router.post('/sign-in', (req, res, next) => {
     });
 });
 
+//UPDATE PASSWORD
+router.post('/change-password', (req, res, next) => {
+  const password = req.body.password;
+  bcryptjs
+    .hash(password, 10)
+    .then((hash) => {
+      return User.findByIdAndUpdate(req.user._id, {
+        passwordHash: hash
+      });
+    })
+    .then((user) => {
+      res.redirect('/user/private');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
 
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();

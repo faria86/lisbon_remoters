@@ -1,13 +1,29 @@
 <h1>Private</h1>
 
-{{#each user}}
+{{#with user}}
 
-  <span><img src="{{ user.photo }}" class="profile-picture"></a></span>
+  <span><img src="{{ user.photo }}" class="profile-picture-private"></a></span>
 
-  <span><strong>Name</strong>:{{name}}'s Profile</span>
+  <span><strong>Name</strong>:{{name}}'s</span>
   <br />
   <span><strong>Email</strong>: {{email}}</span>
   <br />
 
-{{/each}}
+{{/with}}
+
+<form action="/user/private" method="POST" enctype="multipart/form-data">
+  
+  <label for="upload-image-input">Images</label>
+  <input id="upload-image-input" name="images" type="file" />
+  
+  <button>Update</button>
+
+</form>
+
+<form action="/authentication/change-password" method="POST"> 
+  <label for="new-password">Update Password</label>
+  <input type="password" name="password" id="new-password" placeholder="New Strong Password" />
+ 
+  <button>Change password</button>
+</form>
 
