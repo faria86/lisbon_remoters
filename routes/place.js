@@ -84,7 +84,7 @@ placeRouter.get('/:placeId', routeGuard, (req, res, next) => {
     .populate('creator')
     .then((singlePlace) => {
       place = singlePlace
-      return Comment.find({ place:placeId })
+      return Comment.find({ place:placeId }).populate('creator')
     })
     .then(comments =>{
       res.render('place/single', { place, comments, API_KEY: process.env.API_KEY })
