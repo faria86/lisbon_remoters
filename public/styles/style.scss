@@ -1,4 +1,4 @@
-$font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $grey: hsla(0, 0, 75%, 0.5);
 
 * {
@@ -244,5 +244,53 @@ img.google-logo {
 
 #map-container {
   height: 20em;
-  width: 15em
+  width: 15em;
+}
+
+// CREATE FORM
+
+.create-container {
+  padding-top: 5em;
+}
+
+.input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.button3 {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: rgb(106, 48, 236);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.button3:hover {
+  background-color: rgb(135, 96, 221);
+}
+
+.place {
+  margin-bottom: 100px;
+  max-width: 50%;
+
+  a {
+    font-size: 20px;
+    color: green;
+    text-decoration: none;
+  }
+
+  img {
+  }
+
+  small {
+    font-weight: 700;
+  }
 }

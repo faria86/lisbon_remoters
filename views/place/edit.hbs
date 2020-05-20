@@ -1,16 +1,22 @@
-<form action="" method="POST">
+<form action="/place/{{ place._id }}/edit" method="POST">
+  <span>Place Information</span>
+    
+    <input required value="{{ place.name }}"
+           id="name-input" type="text" 
+           name="name" placeholder="Name" class="input">
 
-  <label for="name-input">Place Name</label>
-  <input required id="name-input" type="text" name="name" placeholder="Place Name">
+    <input required value="{{ place.coordinates.[1] }}"
+           id="latitude-input" type="text" 
+           name="latitude" placeholder="Latitude" class="input">
 
-  <label for="latitude-input">Place Latitude</label>
-  <input required id="latitude-input" type="text" name="latitude" placeholder="Restaurant Latitude">
+    <input required value="{{ place.coordinates.[0] }}"
+           id="longitude-input" type="text" 
+           name="longitude" placeholder="Longitude" class="input">
 
-  <label for="longitude-input">Place Longitude</label>
-  <input required id="longitude-input" type="text" name="longitude" placeholder="Restaurant Longitude">
+    <input required value="{{ place.description }}"
+           id="description-input" type="text" 
+           name="description" placeholder="Description" class="input">
 
-  <label for="description-input">Description</label>
-  <input required id="drescription-input" type="text" name="description" placeholder="Place Description">
+  <button class="button3">Save</button>
   
-  <button>Edit Place</button>
 </form>

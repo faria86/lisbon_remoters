@@ -23,6 +23,7 @@ const debug = require("debug");
 const dotenv = require("dotenv");
 const bcryptjs = require("bcryptjs");
 const hbs = require("hbs");
+const hbsJson = require("hbs-json");
 
 //CONNECT PASSPORT
 const passport = require("passport");
@@ -30,6 +31,8 @@ require("./config-passport");
 //END CONNECT
 
 const app = express();
+
+hbs.registerHelper("json", hbsJson);
 
 app.set("views", join(__dirname, "views"));
 app.set("view engine", "hbs");
@@ -54,7 +57,7 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 24 * 15,
+      maxAge: 60 * 60 * 24 * 150000,
       sameSite: "lax",
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

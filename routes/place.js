@@ -1,25 +1,25 @@
-'use strict';
+"use strict";
 
-const express = require('express');
-const Place = require('./../models/place');
-const Comment = require('./../models/comment');
+const express = require("express");
+const Place = require("./../models/place");
+const Comment = require("./../models/comment");
 
 //IMG STORAGE UPLOAD
-const multer = require('multer');
-const cloudinary = require('cloudinary');
-const multerStorageCloudinary = require('multer-storage-cloudinary');
+const multer = require("multer");
+const cloudinary = require("cloudinary");
+const multerStorageCloudinary = require("multer-storage-cloudinary");
 //END IMG
 
 //UPLOAD IMG => CONECTED WITH .ENV
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = multerStorageCloudinary({
   cloudinary,
-  folder: 'libon-remoters'
+  folder: "libon-remoters",
 });
 //END UPLOAD
 
@@ -27,15 +27,15 @@ const uploader = multer({ storage });
 
 const placeRouter = new express.Router();
 
-const routeGuard = require('./../middleware/route-guard');
+const routeGuard = require("./../middleware/route-guard");
 
 /* LISTING PLACES */
 
-placeRouter.get('/list', (req, res, next) => {
+placeRouter.get("/list", (req, res, next) => {
   Place.find()
-    .populate('creator')
+    .populate("creator")
     .then((places) => {
-      res.render('place/list', { places });
+      res.render("place/list", { places });
     })
     .catch((error) => {
       next(error);
@@ -44,13 +44,17 @@ placeRouter.get('/list', (req, res, next) => {
 
 /* ADDING PLACES */
 
-placeRouter.get('/create', routeGuard, (req, res) => {
-  res.render('place/create');
+placeRouter.get("/create", routeGuard, (req, res) => {
+  res.render("place/create");
 });
 
-placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, next) => {
+placeRouter.post("/create", routeGuard, uploader.single("images"), (req, res, next) => {
   const name = req.body.name;
-  const images = req.file.url;
+  let images;
+  if (req.file) {
+    images = req.file.url;
+  }
+
   Place.findOne({ name })
     .then((document) => {
       if (!document) {
@@ -59,7 +63,7 @@ placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, ne
           images,
           description: req.body.description,
           coordinates: [req.body.longitude, req.body.latitude],
-          creator: req.user._id
+          creator: req.user._id,
         });
       } else {
         const error = new Error("There's already a place with that name.");
@@ -68,7 +72,7 @@ placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, ne
     })
     .then((place) => {
       //const id = place._id;
-      res.redirect('/place/list');
+      res.redirect("/place/list");
     })
     .catch((error) => {
       next(error);
@@ -77,17 +81,20 @@ placeRouter.post('/create', routeGuard, uploader.single('images'), (req, res, ne
 
 /* PLACES DETAIL */
 
-placeRouter.get('/:placeId', routeGuard, (req, res, next) => {
+placeRouter.get("/:placeId", routeGuard, (req, res, next) => {
   const placeId = req.params.placeId;
   let place;
   Place.findById(placeId)
-    .populate('creator')
-    .then((singlePlace) => {
-      place = singlePlace
-      return Comment.find({ place:placeId }).populate('creator')
+    .populate("creator")
+    .then((document) => {
+      place = document.toObject();
+      if (req.user && place.creator._id.toString() === req.user._id.toString()) {
+        place.isOwner = true;
+      }
+      return Comment.find({ place: placeId }).populate("creator");
     })
-    .then(comments =>{
-      res.render('place/single', { place, comments, API_KEY: process.env.API_KEY })
+    .then((comments) => {
+      res.render("place/single", { place, comments, API_KEY: process.env.API_KEY });
     })
     .catch((error) => {
       next(error);
@@ -96,13 +103,14 @@ placeRouter.get('/:placeId', routeGuard, (req, res, next) => {
 
 /* DELETING PALCES */
 
-placeRouter.post('/:placeId/delete', (req, res, next) => {
+placeRouter.post("/:placeId/delete", (req, res, next) => {
   const placeId = req.params.placeId;
 
   Place.findByIdAndDelete(placeId)
     .then(() => {
-      res.redirect('/place/list');
-      console.log(`You deleted this Place => ${placeId}`);
+      let msg = `You deleted this Place => ${placeId}`;
+      console.log(msg);
+      res.redirect("/place/list");
     })
     .catch((err) => {
       next(err);
@@ -111,16 +119,16 @@ placeRouter.post('/:placeId/delete', (req, res, next) => {
 
 /* EDIT PLACES */
 
-placeRouter.get('/:placeId/edit', routeGuard, (req, res, next) => {
+placeRouter.get("/:placeId/edit", routeGuard, (req, res, next) => {
   const placeId = req.params.placeId;
   Place.findOne({
-    _id: placeId
+    _id: placeId,
   })
     .then((place) => {
       if (req.user._id.toString === place.creator.toString) {
-        res.render('place/edit', { place });
+        res.render("place/edit", { place });
       } else {
-        res.redirect('/place/list');
+        res.redirect("/place/list");
       }
     })
     .catch((error) => {
@@ -128,23 +136,29 @@ placeRouter.get('/:placeId/edit', routeGuard, (req, res, next) => {
     });
 });
 
-placeRouter.post('/:placeId/edit', routeGuard, (req, res, next) => {
+placeRouter.post("/:placeId/edit", routeGuard, (req, res, next) => {
   const placeId = req.params.placeId;
+
+  //console.log(req.body);
+
+  let coordinates = [];
+  coordinates.push();
+  coordinates.push(req.body.latitude);
 
   Place.findOneAndUpdate(
     {
       _id: placeId,
-      creator: req.user._id
+      creator: req.user._id,
     },
     {
       name: req.body.name,
       description: req.body.description,
       creator: req.user._id,
-      coordinates: [req.body.longitude, req.body.latitude]
+      coordinates: [req.body.longitude, req.body.latitude],
     }
   )
-    .then((place) => {
-      res.redirect('/place/list');
+    .then(() => {
+      res.redirect("/place/list");
     })
     .catch((error) => {
       next(error);

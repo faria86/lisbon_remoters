@@ -200,4 +200,38 @@ img.google-logo {
   height: 20em;
   width: 15em; }
 
+.create-container {
+  padding-top: 5em; }
+
+.input {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+.button3 {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #6a30ec;
+  text-align: center;
+  transition: all 0.2s; }
+
+.button3:hover {
+  background-color: #8760dd; }
+
+.place {
+  margin-bottom: 100px;
+  max-width: 50%; }
+  .place a {
+    font-size: 20px;
+    color: green;
+    text-decoration: none; }
+  .place small {
+    font-weight: 700; }
+
 /*# sourceMappingURL=style.css.map */
