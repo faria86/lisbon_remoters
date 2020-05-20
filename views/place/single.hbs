@@ -10,6 +10,23 @@
     <span>Latitude: {{ place.coordinates.[1] }} Longitude: {{ place.coordinates.[0] }}</span>
 </article>
 
+<ul>
+  {{#each comments}}
+    <li>
+      <p>{{ content }}</p>
+      <small>Commented by {{ creator }}</small>
+      <br />
+      <small>Created At {{ createdAt }}</small>
+    </li>
+  {{/each}}
+</ul>
+
+<form action="/comment/{{ place._id }}" method="POST">
+  <label for="content-input"></label>
+  <textarea id="content-input" name="content" placeholder="Post Comment"></textarea>
+
+  <button>Submit Comment</button>
+</form>
 
 <script>
   function initMap () {
