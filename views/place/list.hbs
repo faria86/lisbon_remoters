@@ -1,6 +1,7 @@
   
 <h1>List of Places</h1>
 
+
 {{#if alert}}
   <div class="alert-{{ alert.type }}">{{ alert.message }}</div>
 {{/if}}
@@ -8,12 +9,13 @@
 {{#each places}}
   <div class="place">
     <a href="/place/{{ _id }}"><h4>{{ name }}</h4></a>
-    <img src="{{ images }}"/>
+    <img src="{{ images }}" class="place-img" />
     <br>
     <small>Created by {{ creator.name }} at {{ creator.createdAt }}</small>
     <hr>
   </div>
 {{/each}} 
+
 
 <h1>Where are the places ?</h1>
 

@@ -1,29 +1,31 @@
-<h1>Private</h1>
+<div class="private-border">
 
-{{#with user}}
+  <section class="user-private">
+    {{#with user}}
+      <div class="profile-img">
+        <img src="{{ photo }}" class="profile-picture-private"></a>
+        <span class="span-profile-img"><strong>Name</strong>:{{name}}'s</span>
+        <span class="span-profile-img"><strong>Email</strong>: {{email}}</span>
+      </div>
+    {{/with}} 
+  </section>
 
-  <span><img src="{{ user.photo }}" class="profile-picture-private"></a></span>
 
-  <span><strong>Name</strong>:{{name}}'s</span>
-  <br />
-  <span><strong>Email</strong>: {{email}}</span>
-  <br />
+  <form action="/user/private" method="POST" enctype="multipart/form-data">
+    
+    <label for="upload-image-input" class="upload-image-input">Update Image</label>
+    <input id="upload-image-input" name="images" type="file" />
+    
+    <button>Update</button>
 
-{{/with}}
+  </form>
 
-<form action="/user/private" method="POST" enctype="multipart/form-data">
+  <form action="/authentication/change-password" method="POST"> 
+    <label for="new-password" class="new-password">Update Password</label>
+    <input type="password" name="password" id="new-password" placeholder="New Strong Password" />
   
-  <label for="upload-image-input">Images</label>
-  <input id="upload-image-input" name="images" type="file" />
-  
-  <button>Update</button>
+    <button>Change password</button>
+  </form>
 
-</form>
-
-<form action="/authentication/change-password" method="POST"> 
-  <label for="new-password">Update Password</label>
-  <input type="password" name="password" id="new-password" placeholder="New Strong Password" />
- 
-  <button>Change password</button>
-</form>
+</div>
 

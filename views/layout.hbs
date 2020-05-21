@@ -9,10 +9,8 @@
   </head>
   <body>
     <nav>
-      <a href="/"><img="#" alt="logo" id="logo-img" />LOGO IMG</a>
-      <a href="/place/list">See All Places</a>
-      <a href="/place/create">Add Place</a>
-      {{#if user}}
+      <a href="/" ><img="#" alt="logo" id="logo-img"/>LOGO IMG</a>
+       {{#if user}}
         <a href="/user/private"><img src="{{ user.photo }}" class="profile-picture">{{user.name}}'s Profile</a>
         <form action="/authentication/sign-out" method="POST">
           <button>Sign Out</button>
@@ -21,11 +19,7 @@
         <a href="/authentication/join-us">Join Us</a>
       {{/if}}
     </nav>
-
-    <div class="teste"></div>
-      {{{body}}}
-
-    
+      {{{body}}}   
     <script src="/scripts/script.js"></script>
     <script src="/scripts/sign-in-sign-out-script.js"></script>
   </body>
