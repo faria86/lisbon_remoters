@@ -9,14 +9,14 @@
   </head>
   <body>
     <nav class="nav-bar">
-      <a href="/" ><img src="/images/logo.png" alt="logo" id="logo-img"/></a>
+      <a href="/" ><img src="/images/Screen Shot 2020-05-18 at 11.03.07.png" alt="logo" id="logo-img"/></a>
        {{#if user}}
-        <a href="/user/private"><img src="{{ user.photo }}" class="profile-picture">{{user.name}}'s Profile</a>
+        <a class="profile-name" href="/user/private"><img src="{{ user.photo }}" class="profile-picture">{{user.name}}'s Profile</a>
         <form action="/authentication/sign-out" method="POST">
-          <button>Sign Out</button>
+          <button class="sign-out">Sign Out</button>
         </form>
         {{else}}
-        <a href="/authentication/join-us">Join Us</a>
+        <a class="join-us" href="/authentication/join-us">Join Us</a>
       {{/if}}
     </nav>
       {{{body}}}   
