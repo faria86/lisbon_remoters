@@ -16,11 +16,10 @@ body {
   font-family: sans-serif;
   font-family: $font-sans;
   line-height: 2;
-  background-color: #212529;
 }
 
 a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -49,6 +48,7 @@ nav {
     }
   }
 }
+
 
 h1,
 h2,
@@ -310,19 +310,13 @@ img.google-logo {
   width: 100%;
 
   h4 {
+    color: black
   }
-}
-
-.place {
-  font-family: sans-serif;
-  margin-bottom: 100px;
-  max-width: 700px;
 }
 
 #map-container {
   height: 20em;
-  max-width: 700px;
-  padding-bottom: 100px;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -380,6 +374,8 @@ _ _,---._
 .app-home-nav-nav-bar {
   width: 100%;
   height: calc(100vh - 16vh);
+  background-color: rgb(200, 181, 241);
+  width: 100%;
 }
 
 .app-home-nav-nav-bar .welcome-phrase {
@@ -400,7 +396,7 @@ _ _,---._
   font-size: 6em;
   line-height: 0.9;
   text-transform: uppercase;
-  color: white;
+  color: black;
 }
 
 .app-home-nav-nav-bar .nav-link-add {
@@ -409,7 +405,7 @@ _ _,---._
   left: 2em;
   letter-spacing: 0.2em;
   opacity: 1;
-  color: white;
+  color: black;
   text-transform: uppercase;
 }
 
@@ -419,7 +415,7 @@ _ _,---._
   right: 2em;
   letter-spacing: 0.2em;
   opacity: 1;
-  color: white;
+  color: black;
   text-transform: uppercase;
 }
 
@@ -442,7 +438,7 @@ img.profile-picture-private {
 
 section,
 span {
-  color: white;
+  color: black;
 }
 
 .span-profile-img {
@@ -450,11 +446,11 @@ span {
 }
 
 label.upload-image-input {
-  color: white;
+  color: black;
 }
 
 label.new-password {
-  color: white;
+  color: black;
 }
 
 img {
@@ -471,14 +467,29 @@ p {
   padding-bottom: 50px;
 }
 
+// LIST SINGLE VIEWS
+
+.map-title {
+  display: flex;
+  justify-content: center;
+  color:rgb(106, 48, 236);
+  text-decoration: underline
+}
+
 #map-container {
-  height: 20em;
-  max-width: 700px;
+  height: 25em;
+  width: 100%;
   margin-bottom: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 0;
+}
+
+.place-single {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .edit-buttons {
@@ -488,22 +499,24 @@ p {
   justify-content: center;
   padding-bottom: 20px;
   padding-bottom: 50px;
+}
 
-  button.edit {
+  button.delete {
     border-radius: 100px;
     color: white;
     background-color: rgb(135, 96, 221);
     width: 100px;
     text-decoration: none;
   }
-  button.delete {
+  button.delete{
     border-radius: 100px;
     color: white;
     background-color: rgb(135, 96, 221);
     width: 100px;
     padding: 0 20px 0 20px;
+    text-decoration: none;
   }
-}
+
 
 .comments {
   max-width: 700px;
@@ -511,12 +524,15 @@ p {
   align-items: center;
   margin: 0 auto;
   padding-top: 50px;
+
+  content-input {
+    width: 100%;
+  }
 }
 
-.submmit-button {
+.submmit {
   border-radius: 100px;
   color: white;
   background-color: rgb(135, 96, 221);
-  width: 100px;
   text-decoration: none;
 }
