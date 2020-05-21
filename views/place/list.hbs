@@ -1,21 +1,18 @@
   
-<h1>List of Places</h1>
+<h1 class="places-title">See all the cool places to work around!</h1>
 
-{{#if alert}}
-  <div class="alert-{{ alert.type }}">{{ alert.message }}</div>
-{{/if}}
+<div class="places">
+  {{#each places}}
+    <div class="place">
+      <a href="/place/{{ _id }}"><h4>{{ name }}</h4></a>
+      <img src="{{ images }}"/>
+      <small>Created by {{ creator.name }} at {{ creator.createdAt }}"</small>
+      <hr>
+    </div>  
+  {{/each}} 
+</div>
 
-{{#each places}}
-  <div class="place">
-    <a href="/place/{{ _id }}"><h4>{{ name }}</h4></a>
-    <img src="{{ images }}"/>
-    <br>
-    <small>Created by {{ creator.name }} at {{ creator.createdAt }}</small>
-    <hr>
-  </div>
-{{/each}} 
-
-<h1>Where are the places ?</h1>
+<h1 class="list-place-title">Where are the places ?</h1>
 
 <div id="map-container"></div>
 
@@ -51,4 +48,4 @@
   }
 </script>
 
-<script src='https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&callback=initMap'async defer></script>
+<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmDb8pgP8aUIY1y42OPlks2nHrtPn2Sq8&callback=initMap'async defer></script>
