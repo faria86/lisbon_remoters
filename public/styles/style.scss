@@ -16,17 +16,16 @@ body {
   font-family: sans-serif;
   font-family: $font-sans;
   line-height: 2;
-  background-color: #212529;
 }
 
 a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
 a:link,
 a:hover {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -37,12 +36,14 @@ a#logo-img {
 
 nav {
   display: flex;
+  border-bottom: 1px solid #f6f5f7;
   a,
   button {
     padding: 1em 0;
     border: 0;
     &:not(:last-child) {
       margin-right: 1em;
+      z-index: 1;
     }
     &:first-child {
       margin-right: auto;
@@ -102,7 +103,7 @@ textarea {
   margin-right: 1em;
 }
 
-//SIGN IN - SING OUT STYLE
+//SIGN IN - SIGN OUT STYLE
 
 input {
   width: 33em;
@@ -155,11 +156,13 @@ button.ghost {
 
 .container.right-panel-active .sign-in-container {
   transform: translateX(100%);
+  opacity: 0;
 }
 
 .sign-up-container {
   left: 0;
   width: 50%;
+  opacity: 0;
   z-index: 1;
 }
 
@@ -248,11 +251,6 @@ img.git-hub-logo {
   border-radius: 50%;
 }
 
-img.google-logo {
-  max-width: 3em;
-  border-radius: 50%;
-}
-
 #map-single {
   height: 20em;
   width: 50em;
@@ -308,9 +306,6 @@ img.google-logo {
   align-items: center;
   flex-direction: column;
   width: 100%;
-
-  h4 {
-  }
 }
 
 .place {
@@ -400,7 +395,7 @@ _ _,---._
   font-size: 6em;
   line-height: 0.9;
   text-transform: uppercase;
-  color: white;
+  color: black;
 }
 
 .app-home-nav-nav-bar .nav-link-add {
@@ -409,7 +404,7 @@ _ _,---._
   left: 2em;
   letter-spacing: 0.2em;
   opacity: 1;
-  color: white;
+  color: black;
   text-transform: uppercase;
 }
 
@@ -419,7 +414,7 @@ _ _,---._
   right: 2em;
   letter-spacing: 0.2em;
   opacity: 1;
-  color: white;
+  color: black;
   text-transform: uppercase;
 }
 
@@ -430,7 +425,7 @@ _ _,---._
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 6em 0;
+  margin: 4em 0;
 }
 
 img.profile-picture-private {
@@ -442,7 +437,7 @@ img.profile-picture-private {
 
 section,
 span {
-  color: white;
+  color: black;
 }
 
 .span-profile-img {
@@ -450,11 +445,11 @@ span {
 }
 
 label.upload-image-input {
-  color: white;
+  color: black;
 }
 
 label.new-password {
-  color: white;
+  color: black;
 }
 
 img {
@@ -519,4 +514,13 @@ p {
   background-color: rgb(135, 96, 221);
   width: 100px;
   text-decoration: none;
+}
+
+.private-border {
+  background-color: #f6f5f7;
+  border-radius: 1%;
+  padding: 0.5em 0;
+  width: 50%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  margin: 0 auto;
 }

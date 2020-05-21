@@ -7,16 +7,15 @@ body {
   margin: 0 auto;
   font-family: sans-serif;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 2;
-  background-color: #212529; }
+  line-height: 2; }
 
 a {
-  color: white;
+  color: black;
   text-decoration: none; }
 
 a:link,
 a:hover {
-  color: white;
+  color: black;
   text-decoration: none; }
 
 a#logo-img {
@@ -24,14 +23,16 @@ a#logo-img {
   padding-left: 3em; }
 
 nav {
-  display: flex; }
+  display: flex;
+  border-bottom: 1px solid #f6f5f7; }
   nav a,
   nav button {
     padding: 1em 0;
     border: 0; }
     nav a:not(:last-child),
     nav button:not(:last-child) {
-      margin-right: 1em; }
+      margin-right: 1em;
+      z-index: 1; }
     nav a:first-child,
     nav button:first-child {
       margin-right: auto; }
@@ -123,11 +124,13 @@ button.ghost {
   z-index: 2; }
 
 .container.right-panel-active .sign-in-container {
-  transform: translateX(100%); }
+  transform: translateX(100%);
+  opacity: 0; }
 
 .sign-up-container {
   left: 0;
   width: 50%;
+  opacity: 0;
   z-index: 1; }
 
 .container.right-panel-active .sign-up-container {
@@ -201,10 +204,6 @@ img.git-hub-logo {
   max-width: 3em;
   border-radius: 50%; }
 
-img.google-logo {
-  max-width: 3em;
-  border-radius: 50%; }
-
 #map-single {
   height: 20em;
   width: 50em;
@@ -275,57 +274,8 @@ img.google-logo {
   align-items: center;
   flex-direction: column;
   width: 100%; }
-  .single-place img {
-    max-width: 700px; }
-  .single-place h1 {
-    padding-top: 70px; }
-  .single-place p {
-    max-width: 700px;
-    margin: 0;
-    padding-bottom: 50px; }
-
-#map-container {
-  height: 20em;
-  max-width: 700px;
-  margin-bottom: 50px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin: 0 auto; }
-
-.edit-buttons {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  padding-bottom: 20px;
-  padding-bottom: 50px; }
-  .edit-buttons button.edit {
-    border-radius: 100px;
-    color: white;
-    background-color: #8760dd;
-    width: 100px;
-    text-decoration: none; }
-  .edit-buttons button.delete {
-    border-radius: 100px;
-    color: white;
-    background-color: #8760dd;
-    width: 100px;
-    padding: 0 20px 0 20px; }
-
-.comments {
-  max-width: 700px;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  padding-top: 50px; }
-
-.submmit-button {
-  border-radius: 100px;
-  color: white;
-  background-color: #8760dd;
-  width: 100px;
-  text-decoration: none; }
+  .single-place small {
+    font-weight: 700; }
 
 /* /////////// HOME PAGE \\\\\\\\\\\\\\\
 
@@ -375,7 +325,7 @@ _ _,---._
   font-size: 6em;
   line-height: 0.9;
   text-transform: uppercase;
-  color: white; }
+  color: black; }
 
 .app-home-nav-nav-bar .nav-link-add {
   position: absolute;
@@ -383,7 +333,7 @@ _ _,---._
   left: 2em;
   letter-spacing: 0.2em;
   opacity: 1;
-  color: white;
+  color: black;
   text-transform: uppercase; }
 
 .app-home-nav-nav-bar .nav-link-list {
@@ -392,7 +342,7 @@ _ _,---._
   right: 2em;
   letter-spacing: 0.2em;
   opacity: 1;
-  color: white;
+  color: black;
   text-transform: uppercase; }
 
 .user-private {
@@ -400,7 +350,7 @@ _ _,---._
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 6em 0; }
+  margin: 4em 0; }
 
 img.profile-picture-private {
   max-width: 15em;
@@ -410,15 +360,77 @@ img.profile-picture-private {
 
 section,
 span {
-  color: white; }
+  color: black; }
 
 .span-profile-img {
   display: flex; }
 
 label.upload-image-input {
-  color: white; }
+  color: black; }
 
 label.new-password {
-  color: white; }
+  color: black; }
+
+img {
+  max-width: 700px; }
+
+h1 {
+  padding-top: 70px; }
+
+p {
+  max-width: 700px;
+  margin: 0;
+  padding-bottom: 50px; }
+
+#map-container {
+  height: 20em;
+  max-width: 700px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto; }
+
+.edit-buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 20px;
+  padding-bottom: 50px; }
+  .edit-buttons button.edit {
+    border-radius: 100px;
+    color: white;
+    background-color: #8760dd;
+    width: 100px;
+    text-decoration: none; }
+  .edit-buttons button.delete {
+    border-radius: 100px;
+    color: white;
+    background-color: #8760dd;
+    width: 100px;
+    padding: 0 20px 0 20px; }
+
+.comments {
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 50px; }
+
+.submmit-button {
+  border-radius: 100px;
+  color: white;
+  background-color: #8760dd;
+  width: 100px;
+  text-decoration: none; }
+
+.private-border {
+  background-color: #f6f5f7;
+  border-radius: 1%;
+  padding: 0.5em 0;
+  width: 50%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  margin: 0 auto; }
 
 /*# sourceMappingURL=style.css.map */
