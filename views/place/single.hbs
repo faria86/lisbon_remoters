@@ -10,15 +10,14 @@
     <span>Latitude: {{ place.coordinates.[1] }} Longitude: {{ place.coordinates.[0] }}</span>
 </article>
 
+{{#if place.isOwner}}
+  <a href="/place/{{ place._id }}/edit">Edit</a>
 
-<!-- EDIT PLACE -->
-<a href="/place/{{place._id}}/edit"></a><button>Edit</button></a>
+  <form action="/place/{{ place._id }}/delete" method="POST">
+    <button class="button3">Delete</button>
+  </form>
 
-
-<!-- DELETE  -->
- <form action="/place/{{place._id}}/delete" method="POST">
-    <button>Delete</button>
-  </form> 
+{{/if}}
 
 <ul>
   {{#each comments}}

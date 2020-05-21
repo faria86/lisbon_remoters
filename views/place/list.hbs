@@ -1,18 +1,54 @@
   
 <h1>List of Places</h1>
 
+{{#if alert}}
+  <div class="alert-{{ alert.type }}">{{ alert.message }}</div>
+{{/if}}
+
 {{#each places}}
-  <a href="/place/{{ _id }}"><h4>{{ name }}</h4></a>
-  <img src="{{ images }}"/>
-  <small>Created by {{ creator.name }}</small>
-  <br>
-  <small>Created at {{ creator.createdAt }}</small>
-  <br />
-  <!--
-  <form action="/place/{{_id}}/delete" method="POST">
-    <button>Delete</button>
-  </form> 
-  -->
+  <div class="place">
+    <a href="/place/{{ _id }}"><h4>{{ name }}</h4></a>
+    <img src="{{ images }}"/>
+    <br>
+    <small>Created by {{ creator.name }} at {{ creator.createdAt }}</small>
+    <hr>
+  </div>
 {{/each}} 
 
+<h1>Where are the places ?</h1>
 
+<div id="map-container"></div>
+
+<script>
+  function initMap () {
+
+    const places =  {{{ json places }}};
+
+    const $mapContainer = document.getElementById('map-container');
+    const map = new window.google.maps.Map($mapContainer, {
+      center: { lat: 38.75, lng: -9.15 },
+      zoom: 10
+    });    
+
+    const markers = [];
+    for (let place of places) {
+
+      const marker = new window.google.maps.Marker({
+        map,
+        position: {
+          lat: place.coordinates[1],
+          lng: place.coordinates[0]
+        }
+      });
+
+      marker.addListener('click', () => {
+        const endpoint = `/place/${ place._id }`;
+        window.location = endpoint;
+      });
+
+      markers.push(marker);
+    }
+  }
+</script>
+
+<script src='https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&callback=initMap'async defer></script>
