@@ -10,6 +10,16 @@
     <span>Latitude: {{ place.coordinates.[1] }} Longitude: {{ place.coordinates.[0] }}</span>
 </article>
 
+
+<!-- EDIT PLACE -->
+<a href="/place/{{place._id}}/edit"></a><button>Edit</button></a>
+
+
+<!-- DELETE  -->
+ <form action="/place/{{place._id}}/delete" method="POST">
+    <button>Delete</button>
+  </form> 
+
 <ul>
   {{#each comments}}
     <li>
@@ -20,6 +30,7 @@
     </li>
   {{/each}}
 </ul>
+
 
 <form action="/comment/{{ place._id }}" method="POST">
   <label for="content-input"></label>

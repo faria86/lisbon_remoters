@@ -102,7 +102,7 @@ placeRouter.post('/:placeId/delete', (req, res, next) => {
   Place.findByIdAndDelete(placeId)
     .then(() => {
       res.redirect('/place/list');
-      console.log(`You deleted this Place => ${placeId}`);
+      //console.log(`You deleted this Place => ${placeId}`);
     })
     .catch((err) => {
       next(err);
