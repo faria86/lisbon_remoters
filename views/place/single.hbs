@@ -43,6 +43,26 @@
   </form>
 </div>
 
+{{/if}}
+
+<ul>
+  {{#each comments}}
+    <li>
+      <p>{{ content }}</p>
+      <small>Commented by {{ creator.name }}</small>
+      <br />
+      <small>Created At {{ creator.createdAt }}</small>
+    </li>
+  {{/each}}
+</ul>
+
+
+<form action="/comment/{{ place._id }}" method="POST">
+  <label for="content-input"></label>
+  <textarea id="content-input" name="content" placeholder="Post Comment"></textarea>
+
+  <button>Submit Comment</button>
+</form>
 
 <script>
   function initMap () {
