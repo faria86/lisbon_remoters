@@ -17,9 +17,15 @@
   {{/if}}
 </div>
 
-<div id="map-container">
-  <small>Latitude: {{ place.coordinates.[1] }} Longitude: {{ place.coordinates.[0] }}</small>
-</div>
+
+<br>
+
+<form action="/comment/{{ place._id }}" method="POST">
+    <textarea id="content-input" name="content" placeholder="Post Comment"></textarea>
+
+    <button class="submmit">Add Your Comment</button>
+    <label for="content-input"></label>
+</form>  
 
 <div class="comments">
   <ul>
@@ -27,18 +33,15 @@
       <li>
         <p>{{ content }}</p>
         <small>Commented by {{ creator.name }}</small>
-        <br />
         <small>Created At {{ creator.createdAt }}</small>
+        <hr>
       </li>
     {{/each}}
   </ul>
+</div>
 
-  <form action="/comment/{{ place._id }}" method="POST">
-    <label for="content-input"></label>
-    <textarea id="content-input" name="content" placeholder="Post Comment"></textarea>
-
-    <button class="submmit">Add Your Comment</button>
-  </form>
+<div id="map-container">
+  <small>Latitude: {{ place.coordinates.[1] }} Longitude: {{ place.coordinates.[0] }}</small>
 </div>
 
 <script>

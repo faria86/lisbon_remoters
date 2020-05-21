@@ -438,9 +438,16 @@ button.delete {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  padding-top: 50px; }
-  .comments content-input {
-    width: 100%; }
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column; }
+  .comments p {
+    margin: 0, auto;
+    padding-bottom: -10px;
+    width: 500px; }
+
+#content-input {
+  width: 500px; }
 
 .submmit {
   border-radius: 100px;
