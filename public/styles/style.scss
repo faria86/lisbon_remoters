@@ -253,9 +253,12 @@ img.google-logo {
   border-radius: 50%;
 }
 
-#map-container {
+#map-single {
   height: 20em;
-  width: 15em;
+  width: 50em;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 // CREATE FORM
@@ -288,15 +291,57 @@ img.google-logo {
   background-color: rgb(135, 96, 221);
 }
 
-.place {
-  margin-bottom: 100px;
-  max-width: 50%;
+// LIST OF ALL PLACES
 
-  a {
-    font-size: 20px;
-    color: green;
-    text-decoration: none;
+.places-title {
+  font-family: sans-serif;
+  padding-bottom: 50px;
+  padding-top: 40px;
+  justify-content: center;
+  display: flex;
+  color: rgb(106, 48, 236);
+  text-decoration: underline;
+}
+
+.places {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  h4 {
   }
+}
+
+.place {
+  font-family: sans-serif;
+  margin-bottom: 100px;
+  max-width: 700px;
+}
+
+#map-container {
+  height: 20em;
+  max-width: 700px;
+  padding-bottom: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.list-place-title {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(106, 48, 236);
+}
+
+// SINGLE PLACE
+
+.single-place {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 
   small {
     font-weight: 700;
@@ -410,4 +455,68 @@ label.upload-image-input {
 
 label.new-password {
   color: white;
+}
+
+img {
+  max-width: 700px;
+}
+
+h1 {
+  padding-top: 70px;
+}
+
+p {
+  max-width: 700px;
+  margin: 0;
+  padding-bottom: 50px;
+}
+
+#map-container {
+  height: 20em;
+  max-width: 700px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.edit-buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 20px;
+  padding-bottom: 50px;
+
+  button.edit {
+    border-radius: 100px;
+    color: white;
+    background-color: rgb(135, 96, 221);
+    width: 100px;
+    text-decoration: none;
+  }
+  button.delete {
+    border-radius: 100px;
+    color: white;
+    background-color: rgb(135, 96, 221);
+    width: 100px;
+    padding: 0 20px 0 20px;
+  }
+}
+
+.comments {
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.submmit-button {
+  border-radius: 100px;
+  color: white;
+  background-color: rgb(135, 96, 221);
+  width: 100px;
+  text-decoration: none;
 }

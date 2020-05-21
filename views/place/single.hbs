@@ -1,21 +1,47 @@
 <section class="comment-wrap">
     <h1>{{ place.name }}</h1>
-    <small>Created by {{ place.creator.name }}</small>
     <img src="{{ place.images }}">
+    <small>Created by {{ place.creator.name }}</small>
     <br />
     <p>{{ place.description }}</p>
+    <hr>
+</div>
 
-    <div id="map-container"></div>
 
-    <span>Latitude: {{ place.coordinates.[1] }} Longitude: {{ place.coordinates.[0] }}</span>
-</article>
 
-{{#if place.isOwner}}
-  <a href="/place/{{ place._id }}/edit">Edit</a>
+<div class="edit-buttons">
+  {{#if place.isOwner}}
+    <button class="delete"><a href="/place/{{ place._id }}/edit">Edit</a></button>
+    
+    <form action="/place/{{ place._id }}/delete" method="POST">
+      <button class="delete">Delete</button>
+    </form>
+  {{/if}}
+</div>
 
-  <form action="/place/{{ place._id }}/delete" method="POST">
-    <button class="button3">Delete</button>
+<div id="map-container">
+  <small>Latitude: {{ place.coordinates.[1] }} Longitude: {{ place.coordinates.[0] }}</small>
+</div>
+
+<div class="comments">
+  <ul>
+    {{#each comments}}
+      <li>
+        <p>{{ content }}</p>
+        <small>Commented by {{ creator.name }}</small>
+        <br />
+        <small>Created At {{ creator.createdAt }}</small>
+      </li>
+    {{/each}}
+  </ul>
+
+  <form action="/comment/{{ place._id }}" method="POST">
+    <label for="content-input"></label>
+    <textarea id="content-input" name="content" placeholder="Post Comment"></textarea>
+
+    <button class="submmit-button">Submit Comment</button>
   </form>
+</div>
 
 {{/if}}
 

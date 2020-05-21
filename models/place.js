@@ -15,7 +15,7 @@ const placeSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      maxlength: 300
+      maxlength: 500
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
