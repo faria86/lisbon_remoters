@@ -51,6 +51,7 @@ nav {
   }
 }
 
+
 h1,
 h2,
 h3,
@@ -306,18 +307,15 @@ img.git-hub-logo {
   align-items: center;
   flex-direction: column;
   width: 100%;
-}
 
-.place {
-  font-family: sans-serif;
-  margin-bottom: 100px;
-  max-width: 700px;
+  h4 {
+    color: black
+  }
 }
 
 #map-container {
   height: 20em;
-  max-width: 700px;
-  padding-bottom: 100px;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -375,6 +373,8 @@ _ _,---._
 .app-home-nav-nav-bar {
   width: 100%;
   height: calc(100vh - 16vh);
+  background-color: rgb(200, 181, 241);
+  width: 100%;
 }
 
 .app-home-nav-nav-bar .welcome-phrase {
@@ -466,14 +466,29 @@ p {
   padding-bottom: 50px;
 }
 
+// LIST SINGLE VIEWS
+
+.map-title {
+  display: flex;
+  justify-content: center;
+  color:rgb(106, 48, 236);
+  text-decoration: underline
+}
+
 #map-container {
-  height: 20em;
-  max-width: 700px;
+  height: 25em;
+  width: 100%;
   margin-bottom: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 0;
+}
+
+.place-single {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .edit-buttons {
@@ -483,22 +498,24 @@ p {
   justify-content: center;
   padding-bottom: 20px;
   padding-bottom: 50px;
+}
 
-  button.edit {
+  button.delete {
     border-radius: 100px;
     color: white;
     background-color: rgb(135, 96, 221);
     width: 100px;
     text-decoration: none;
   }
-  button.delete {
+  button.delete{
     border-radius: 100px;
     color: white;
     background-color: rgb(135, 96, 221);
     width: 100px;
     padding: 0 20px 0 20px;
+    text-decoration: none;
   }
-}
+
 
 .comments {
   max-width: 700px;
@@ -506,13 +523,16 @@ p {
   align-items: center;
   margin: 0 auto;
   padding-top: 50px;
+
+  content-input {
+    width: 100%;
+  }
 }
 
-.submmit-button {
+.submmit {
   border-radius: 100px;
   color: white;
   background-color: rgb(135, 96, 221);
-  width: 100px;
   text-decoration: none;
 }
 

@@ -2,22 +2,19 @@
 <h1 class="places-title">See all the cool places to work around!</h1>
 
 
-{{#if alert}}
-  <div class="alert-{{ alert.type }}">{{ alert.message }}</div>
-{{/if}}
 
-{{#each places}}
-  <div class="place">
+<div class="places">
+  {{#each places}}
     <a href="/place/{{ _id }}"><h4>{{ name }}</h4></a>
     <img src="{{ images }}" class="place-img" />
     <br>
     <small>Created by {{ creator.name }} at {{ creator.createdAt }}</small>
-    <hr>
-  </div>
-{{/each}} 
+    <br /> 
+  {{/each}} 
+</div>
 
 
-<h1>Where are the places ?</h1>
+<h1 class="map-title">Where are the places ?</h1>
 
 <div id="map-container"></div>
 

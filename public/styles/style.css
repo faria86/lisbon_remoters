@@ -249,16 +249,12 @@ img.git-hub-logo {
   align-items: center;
   flex-direction: column;
   width: 100%; }
-
-.place {
-  font-family: sans-serif;
-  margin-bottom: 100px;
-  max-width: 700px; }
+  .places h4 {
+    color: black; }
 
 #map-container {
   height: 20em;
-  max-width: 700px;
-  padding-bottom: 100px;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column; }
@@ -307,7 +303,9 @@ _ _,---._
 */
 .app-home-nav-nav-bar {
   width: 100%;
-  height: calc(100vh - 16vh); }
+  height: calc(100vh - 16vh);
+  background-color: #c8b5f1;
+  width: 100%; }
 
 .app-home-nav-nav-bar .welcome-phrase {
   height: 100%;
@@ -382,14 +380,25 @@ p {
   margin: 0;
   padding-bottom: 50px; }
 
+.map-title {
+  display: flex;
+  justify-content: center;
+  color: #6a30ec;
+  text-decoration: underline; }
+
 #map-container {
-  height: 20em;
-  max-width: 700px;
+  height: 25em;
+  width: 100%;
   margin-bottom: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto; }
+  margin: 0; }
+
+.place-single {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .edit-buttons {
   display: flex;
@@ -398,18 +407,21 @@ p {
   justify-content: center;
   padding-bottom: 20px;
   padding-bottom: 50px; }
-  .edit-buttons button.edit {
-    border-radius: 100px;
-    color: white;
-    background-color: #8760dd;
-    width: 100px;
-    text-decoration: none; }
-  .edit-buttons button.delete {
-    border-radius: 100px;
-    color: white;
-    background-color: #8760dd;
-    width: 100px;
-    padding: 0 20px 0 20px; }
+
+button.delete {
+  border-radius: 100px;
+  color: white;
+  background-color: #8760dd;
+  width: 100px;
+  text-decoration: none; }
+
+button.delete {
+  border-radius: 100px;
+  color: white;
+  background-color: #8760dd;
+  width: 100px;
+  padding: 0 20px 0 20px;
+  text-decoration: none; }
 
 .comments {
   max-width: 700px;
@@ -417,20 +429,13 @@ p {
   align-items: center;
   margin: 0 auto;
   padding-top: 50px; }
+  .comments content-input {
+    width: 100%; }
 
-.submmit-button {
+.submmit {
   border-radius: 100px;
   color: white;
   background-color: #8760dd;
-  width: 100px;
   text-decoration: none; }
-
-.private-border {
-  background-color: #f6f5f7;
-  border-radius: 1%;
-  padding: 0.5em 0;
-  width: 50%;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  margin: 0 auto; }
 
 /*# sourceMappingURL=style.css.map */

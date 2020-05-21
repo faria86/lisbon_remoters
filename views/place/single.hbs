@@ -1,8 +1,8 @@
-<section class="comment-wrap">
+<section class="place-single">
     <h1>{{ place.name }}</h1>
     <img src="{{ place.images }}">
     <small>Created by {{ place.creator.name }}</small>
-    <br />
+    <br class="line-break" />
     <p>{{ place.description }}</p>
     <hr>
 </div>
@@ -37,29 +37,9 @@
     <label for="content-input"></label>
     <textarea id="content-input" name="content" placeholder="Post Comment"></textarea>
 
-    <button class="submmit-button">Submit Comment</button>
+    <button class="submmit">Add Your Comment</button>
   </form>
 </div>
-
-
-<ul>
-  {{#each comments}}
-    <li>
-      <p>{{ content }}</p>
-      <small>Commented by {{ creator.name }}</small>
-      <br />
-      <small>Created At {{ creator.createdAt }}</small>
-    </li>
-  {{/each}}
-</ul>
-
-
-<form action="/comment/{{ place._id }}" method="POST">
-  <label for="content-input"></label>
-  <textarea id="content-input" name="content" placeholder="Post Comment"></textarea>
-
-  <button>Submit Comment</button>
-</form>
 
 <script>
   function initMap () {
