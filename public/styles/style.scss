@@ -51,7 +51,6 @@ nav {
   }
 }
 
-
 h1,
 h2,
 h3,
@@ -309,7 +308,7 @@ img.git-hub-logo {
   width: 100%;
 
   h4 {
-    color: black
+    color: black;
   }
 }
 
@@ -370,6 +369,10 @@ _ _,---._
 
 */
 
+#logo-img {
+  width: 20%;
+}
+
 .app-home-nav-nav-bar {
   width: 100%;
   height: calc(100vh - 16vh);
@@ -384,7 +387,7 @@ _ _,---._
 }
 
 .app-home-nav-nav-bar .content {
-  width: 60%;
+  width: 75%;
   margin: 0 auto;
   text-align: center;
 }
@@ -471,8 +474,8 @@ p {
 .map-title {
   display: flex;
   justify-content: center;
-  color:rgb(106, 48, 236);
-  text-decoration: underline
+  color: rgb(106, 48, 236);
+  text-decoration: underline;
 }
 
 #map-container {
@@ -500,22 +503,21 @@ p {
   padding-bottom: 50px;
 }
 
-  button.delete {
-    border-radius: 100px;
-    color: white;
-    background-color: rgb(135, 96, 221);
-    width: 100px;
-    text-decoration: none;
-  }
-  button.delete{
-    border-radius: 100px;
-    color: white;
-    background-color: rgb(135, 96, 221);
-    width: 100px;
-    padding: 0 20px 0 20px;
-    text-decoration: none;
-  }
-
+button.delete {
+  border-radius: 100px;
+  color: white;
+  background-color: rgb(135, 96, 221);
+  width: 100px;
+  text-decoration: none;
+}
+button.delete {
+  border-radius: 100px;
+  color: white;
+  background-color: rgb(135, 96, 221);
+  width: 100px;
+  padding: 0 20px 0 20px;
+  text-decoration: none;
+}
 
 .comments {
   max-width: 700px;
