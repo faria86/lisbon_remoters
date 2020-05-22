@@ -6,7 +6,7 @@
     <a href="/place/{{ _id }}"><h4>{{ name }}</h4></a>
     <img src="{{ images }}" class="place-img" />
     <br>
-    <small>Created by {{ creator.name }} at {{ creator.createdAt }}</small>
+    <span><strong>Created by: </strong> {{ creator.name }}</span> <!-- at {{ creator.createdAt }} -->
     <hr> 
   {{/each}} 
 </div>

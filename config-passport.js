@@ -29,7 +29,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_API_CLIENT_ID,
       clientSecret: process.env.GITHUB_API_CLIENT_SECRET,
-      callbackURL: 'http://localhost:3000/git-hub-authentication/github-callback',
+      callbackURL: 'https://lisbon-remoters.herokuapp.com/git-hub-authentication/github-callback',
       scope: 'user:email'
     },
     (accessToken, refreshToken, profile, callback) => {
