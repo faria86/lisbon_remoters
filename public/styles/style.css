@@ -235,6 +235,10 @@ img.git-hub-logo {
 .create-container {
   padding-top: 5em; }
 
+.create-container.private-border {
+  margin-top: 5em;
+  padding: 2em; }
+
 .input {
   padding-top: 5px;
   padding-bottom: 5px; }
@@ -323,7 +327,7 @@ _ _,---._
 
 */
 #logo-img {
-  width: 20%; }
+  width: 100%; }
 
 .app-home-nav-nav-bar {
   width: 100%;

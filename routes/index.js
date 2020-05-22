@@ -26,7 +26,7 @@ const storage = multerStorageCloudinary({
 const uploader = multer({ storage });
 
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Hello World!' });
+  res.render('index', { title: 'Lisbon Remoters' });
 });
 
 router.get('/user/private', routeGuard, (req, res, next) => {

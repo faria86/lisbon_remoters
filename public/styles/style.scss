@@ -165,7 +165,6 @@ button.ghost {
   overflow: hidden;
   width: 100%;
   min-height: 60vh;
-
 }
 
 .form-container {
@@ -290,6 +289,11 @@ img.git-hub-logo {
 
 .create-container {
   padding-top: 5em;
+}
+
+.create-container.private-border {
+  margin-top: 5em;
+  padding: 2em;
 }
 
 .input {
